@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserveren - Bowling for Sintnyk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reservation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="bowling-ball">
+                    <div class="hole hole1"></div>
+                    <div class="hole hole2"></div>
+                    <div class="hole hole3"></div>
+                </div>
+                <h1 class="logo-text">Bowling for Sintnyk</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="reserveren.html" class="active">Reserveren</a></li>
+                    <li><a href="over-ons.html">Over Ons</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="reservation-hero">
+                <h2>Reserveer je Bowlingavond</h2>
+                <p>Vul het formulier in en wij nemen zo snel mogelijk contact met je op om je reservering te bevestigen!</p>
+            </section>
+
+            <section class="reservation-form-section">
+                <form class="reservation-form" id="reservationForm">
+                    <div class="form-step" id="step1">
+                        <h3>Stap 1: Datum en tijd</h3>
+                        
+                        <div class="form-group">
+                            <label for="date">Gewenste datum *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Gewenste tijdslot *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Kies een tijdslot</option>
+                                <option value="16:00">16:00 - 17:00</option>
+                                <option value="17:00">17:00 - 18:00</option>
+                                <option value="18:00">18:00 - 19:00</option>
+                                <option value="19:00">19:00 - 20:00</option>
+                                <option value="20:00">20:00 - 21:00</option>
+                                <option value="21:00">21:00 - 22:00</option>
+                                <option value="22:00">22:00 - 23:00</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="next-button" onclick="nextStep(2)">Volgende</button>
+                    </div>
+
+                    <div class="form-step" id="step2" style="display: none;">
+                        <h3>Stap 2: Groep en banen</h3>
+                        
+                        <div class="form-group">
+                            <label for="people">Aantal personen *</label>
+                            <select id="people" name="people" required>
+                                <option value="">Selecteer aantal personen</option>
+                                <option value="1">1 persoon</option>
+                                <option value="2">2 personen</option>
+                                <option value="3">3 personen</option>
+                                <option value="4">4 personen</option>
+                                <option value="5">5 personen</option>
+                                <option value="6">6 personen</option>
+                                <option value="7">7 personen</option>
+                                <option value="8">8 personen</option>
+                                <option value="9-12">9-12 personen</option>
+                                <option value="13-16">13-16 personen</option>
+                                <option value="17+">Meer dan 16 personen</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lanes">Gewenst aantal banen</label>
+                            <select id="lanes" name="lanes">
+                                <option value="1">1 baan</option>
+                                <option value="2">2 banen</option>
+                                <option value="3">3 banen</option>
+                                <option value="4">4 banen</option>
+                            </select>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="prev-button" onclick="prevStep(1)">Vorige</button>
+                            <button type="button" class="next-button" onclick="nextStep(3)">Volgende</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step3" style="display: none;">
+                        <h3>Stap 3: Arrangement (optioneel)</h3>
+                        
+                        <div class="form-group">
+                            <label>Kies een arrangement</label>
+                            <div class="arrangement-options">
+                                <label class="arrangement-option">
+                                    <input type="radio" name="arrangement" value="basic">
+                                    <div class="arrangement-card">
+                                        <h4>Basis Pakket</h4>
+                                        <p>2 uur bowlen + schoenverhuur</p>
+                                        <span class="price">€18,50 p.p.</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="arrangement-option">
+                                    <input type="radio" name="arrangement" value="deluxe">
+                                    <div class="arrangement-card">
+                                        <h4>Deluxe Pakket</h4>
+                                        <p>2 uur bowlen + schoenverhuur + hapjes</p>
+                                        <span class="price">€24,50 p.p.</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="arrangement-option">
+                                    <input type="radio" name="arrangement" value="party">
+                                    <div class="arrangement-card">
+                                        <h4>Party Pakket</h4>
+                                        <p>3 uur bowlen + schoenverhuur + diner + drankjes</p>
+                                        <span class="price">€39,50 p.p.</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="arrangement-option">
+                                    <input type="radio" name="arrangement" value="none" checked>
+                                    <div class="arrangement-card">
+                                        <h4>Geen arrangement</h4>
+                                        <p>Alleen bowlen, betaling per uur</p>
+                                        <span class="price">Standaard tarieven</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="prev-button" onclick="prevStep(2)">Vorige</button>
+                            <button type="button" class="next-button" onclick="nextStep(4)">Volgende</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step4" style="display: none;">
+                        <h3>Stap 4: Contactgegevens</h3>
+                        
+                        <div class="form-group">
+                            <label for="name">Naam *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mailadres *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefoonnummer *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Opmerkingen</label>
+                            <textarea id="comments" name="comments" rows="4" placeholder="Bijzondere wensen, vragen of opmerkingen..."></textarea>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="prev-button" onclick="prevStep(3)">Vorige</button>
+                            <button type="submit" class="submit-button">Reservering Versturen</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step confirmation" id="confirmation" style="display: none;">
+                        <div class="success-message">
+                            <div class="success-icon">🎳</div>
+                            <h3>Strike! Je reservering is ontvangen.</h3>
+                            <p>We nemen snel contact met je op om alles te bevestigen.</p>
+                            <p><strong>Vergeet niet:</strong> De betaling vindt plaats op locatie.</p>
+                            <a href="index.html" class="home-button">Terug naar Home</a>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section class="reservation-info">
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h4>📞 Direct Reserveren?</h4>
+                        <p>Bel ons op <strong>0513 - 123 456</strong> voor directe reserveringen of vragen.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>💰 Betaling</h4>
+                        <p>Alle betalingen vinden plaats op locatie. Contant of pinnen is mogelijk.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>⏰ Bevestiging</h4>
+                        <p>Je ontvangt binnen 24 uur een bevestiging via e-mail of telefoon.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h4>Contact</h4>
+                    <p>📍 Hoofdstraat 123, Sint Nicolaasga</p>
+                    <p>📞 0513 - 123 456</p>
+                    <p>✉️ info@bowlingforsintnyk.nl</p>
+                </div>
+                <div class="social-media">
+                    <h4>Volg Ons</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bowling for Sintnyk. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        function nextStep(step) {
+            // Hide current step
+            document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+            // Show next step
+            document.getElementById('step' + step).style.display = 'block';
+        }
+
+        function prevStep(step) {
+            // Hide current step
+            document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+            // Show previous step
+            document.getElementById('step' + step).style.display = 'block';
+        }
+
+        // Form submission
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+                document.getElementById('confirmation').style.display = 'block';
+            }, 500);
+        });
+
+        // Update lanes based on people count
+        document.getElementById('people').addEventListener('change', function() {
+            const people = parseInt(this.value) || 0;
+            const lanesSelect = document.getElementById('lanes');
+            const recommendedLanes = Math.ceil(people / 4);
+            
+            if (recommendedLanes <= 4) {
+                lanesSelect.value = recommendedLanes;
+            }
+        });
+    </script>
+</body>
+</html>
